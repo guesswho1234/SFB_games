@@ -1,0 +1,55 @@
+#form {
+    display: none;
+}
+
+#reset-rooms {
+    margin: 0px !important;
+}
+
+.btn-group {
+    gap: 10px;
+}
+
+.btn-group button {
+    border-radius: .25rem !important;
+}
+
+.low.hasRoom {
+    color: #28a745;
+}
+
+.medium.hasRoom {
+    color: #ffc107;
+}
+
+.high.hasRoom {
+    color: #ff7b07;
+}
+
+.full.hasRoom {
+    color: #dc3545;
+}
+
+.hasNoRoom {
+    color: #6c757d;
+}
+
+.button-progress-group {
+    width: fit-content;
+    display: grid;
+    place-items: center;
+}
+
+#roomSettings th:last-of-type {
+    display: flex;
+    place-content: space-between;
+}
+
+#numParticipants {
+    font-weight: normal;
+}
+
+#numParticipants input {
+    width: 50px;
+    text-align: right;
+}

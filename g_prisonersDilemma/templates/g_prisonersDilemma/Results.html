@@ -1,0 +1,88 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+    {% include 'global/elements/baseStyles_template.html' %}
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** SCRIPTS *** #}
+{# ****************************************************************************************************************** #}
+{% block scripts %}
+    {% include 'global/elements/baseScripts_template.html' %}
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+<!--loaded from proxyTitle-->
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ****************************************************************************************************************** #}
+{% block content %}
+    <span id="proxyTitle">
+        <span>
+            <span class="langElement" lang="en">Result</span>
+            <span class="langElement" lang="de">Ergebnis</span>
+        </span>
+
+        {% include 'global/elements/exit_template.html' %}
+    </span>
+    <div class="box">
+        <div class="card bg-light m-3">
+            <div class="card-body text-center">
+                <p>
+                    {% if same_choice %}
+                        <span class="langElement" lang="en">
+                            Both you and your partner have decided {% if my_decision == "Defect" %}not{% endif %} to confess.
+                        </span>
+                        <span class="langElement" lang="de">
+                            Sowohl du als auch dein/e Partner/in haben sich dazu entschlossen
+                            {% if my_decision == "Defect" %} nicht {% endif %} zu gestehen.
+                        </span>
+                    {% else %}
+                        <span class="langElement" lang="en">
+                            You decided {% if my_decision == "Defect" %}not{% endif %} to confess. <br/>
+                            Your partner decided {% if opponent_decision == "Defect" %}not{% endif %} to confess.
+                        </span>
+                        <span class="langElement" lang="de">
+                            Du hast dich dazu entschlossen {% if my_decision == "Defect" %}nicht{% endif %} zu gestehen. <br/>
+                            Dein/e Partner/in hat sich entschieden {% if opponent_decision == "Defect" %}nicht{% endif %} zu gestehen.
+                        </span>
+                    {% endif %}
+                </p>
+                <p>
+                    <span class="langElement" lang="en">
+                        <b>Therefore, you receive a payoff of {{ player.payoff }}.</b> <br/>
+
+                        Your partner receives a payoff of
+                    </span>
+                    <span class="langElement" lang="de">
+                        <b>Das heißt, du erhälst eine Auszahlung von {{ player.payoff }}.</b> <br/>
+
+                        Dein/e Partner/in erhält eine Auszahlung von
+                    </span>
+                    <span>
+                        {% if my_decision == "Defect" and opponent_decision == "Defect" %}
+                           {{ Constants.pd_both_defect_payoff }}.
+                        {% elif my_decision == "Defect" and opponent_decision == "Cooperate" %}
+                            {{ Constants.pd_betray_payoff }}.
+                        {% elif my_decision == "Cooperate" and opponent_decision == "Defect" %}
+                            {{ Constants.pd_betrayed_payoff }}.
+                        {% elif my_decision == "Cooperate" and opponent_decision == "Cooperate" %}
+                            {{ Constants.pd_both_cooperate_payoff }}.
+                        {% endif %}
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

@@ -1,0 +1,101 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+    {% include 'global/elements/baseStyles_template.html' %}
+    <link href="{{ static 'global/css/radioDropdown.css' }}" rel="stylesheet">
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** SCRIPTS *** #}
+{# ****************************************************************************************************************** #}
+{% block scripts %}
+    {% include 'global/elements/baseScripts_template.html' %}
+    <script src="{{ static 'global/js/radioDropdown.js' }}"></script>
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+<!--loaded from proxyTitle-->
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ****************************************************************************************************************** #}
+{% block content %}
+    <span id="proxyTitle">
+        <span>
+            <span class="langElement" lang="en">Explanation and Decision</span>
+            <span class="langElement" lang="de">Erklärung und Entscheidung</span>
+        </span>
+
+        {% include 'global/elements/exit_template.html' %}
+    </span>
+    <div class="box">
+        <div class="card bg-light m-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        <span class="langElement" lang="en">
+                            <p>
+                                You are Player B. Player A received {{ Constants.tg_endowment|c }} and decided how many
+                                of these he/she wants to send to you (0 to {{ Constants.tg_endowment }}). Each Coin
+                                sent to you was multiplied by {{ Constants.tg_multiplier }}. You now decide how many of the
+                                multiplied Coins you want to keep and how many you want to send back to Player A.
+                            </p>
+                            <p class="font-weight-bold mt-4">
+                                <b>Player A sent {{ group.tg_offer|c }} to you.<br/>
+                                Therefore, there are {{ tg_multipliedCoins|c }} available to you.</b>
+                            </p>
+                        </span>
+                        <span class="langElement" lang="de">
+                            <p>
+                                Du bist Spieler B. Spieler A hat {{ Constants.tg_endowment|c }} erhalten und darüber
+                                entschieden, wie viele dieser Taler er/sie an dich senden möchte (0 bis
+                                {{ Constants.tg_endowment }}). Jeder dir zugesendete Taler, wurde mal
+                                {{ Constants.tg_multiplier }} genommen. Du entscheidest nun darüber, wie viele der
+                                vervielfachten Taler du für dich behalten und wie viele du an Spieler A zurücksenden
+                                möchtest.
+                            </p>
+                            <p class="font-weight-bold mt-4">
+                                <b>Spieler A hat dir {{ group.tg_offer }} Taler gesendet.<br/>
+                                Dir stehen somit {{ tg_multipliedCoins }} Taler zur Verfügung.</b>
+                            </p>
+                        </span>
+                        <span class="langElement" lang="en">Your decision:</span>
+                        <span class="langElement" lang="de">Deine Entscheidung:</span>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content">
+                                <span class="dropdownSelectedPlaceholder">
+                                    <span class="langElement" lang="en">Click to choose your offer</span>
+                                    <span class="langElement" lang="de">Klicken um einen Vorschlag zu wählen</span>
+                                </span>
+                                {% for field in form %}
+                                    <ul>
+                                        {% for choice in field %}
+                                            <li>
+                                                {{ choice }}
+                                                {{ choice.label }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div>
+                            {% include 'global/elements/next_template.html' %}
+                        </div>
+                    </div>
+                    <div class="col-4 text-center">
+                        <img src="{% static 'img/dollar.png' %}" width="400px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

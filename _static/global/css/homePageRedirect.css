@@ -1,0 +1,9 @@
+#homePageRedirect {
+    display: grid;
+    place-content: center;
+    place-items: center;
+}
+
+#homePageRedirect img {
+    width: 250px;
+}

@@ -1,0 +1,99 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+    {% include 'global/elements/baseStyles_template.html' %}
+    <link href="{{ static 'global/css/radioDropdown.css' }}" rel="stylesheet">
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** SCRIPTS *** #}
+{# ****************************************************************************************************************** #}
+{% block scripts %}
+    {% include 'global/elements/baseScripts_template.html' %}
+    <script src="{{ static 'global/js/radioDropdown.js' }}"></script>
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+<!--loaded from proxyTitle-->
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ****************************************************************************************************************** #}
+{% block content %}
+    <span id="proxyTitle">
+        <span>
+            <span class="langElement" lang="en">Explanation and Decision</span>
+            <span class="langElement" lang="de">Erklärung und Entscheidung</span>
+        </span>
+
+        {% include 'global/elements/exit_template.html' %}
+    </span>
+    <div class="box">
+        <div class="card bg-light m-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        <span class="langElement" lang="en">
+                            <p>
+                                You are Player A and have to make an offer to split {{ Constants.ug_endowment|c }}
+                                between Player B and yourself. You offer an amount of Coins (0 to
+                                {{ Constants.ug_endowment }}) for Player B to receive.
+                            </p>
+                            <p>
+                                Player B can accept or reject your offer. When he/she accepts, Player B and you will
+                                be able to collect the amounts according to your offer. When he/she rejects, both of
+                                you get {{ Constants.ug_outside|c }}.
+                            </p>
+                        </span>
+                        <span class="langElement" lang="de">
+                            <p>
+                                Du bist Spieler A und machst einen Vorschlag darüber, wie {{ Constants.ug_endowment|c }}
+                                zwischen dir und Spieler B aufgeteilt werden sollen. Du schlägst eine Anzahl an Talern
+                                (0 bis {{ Constants.ug_endowment }}) vor, die Spieler B erhalten soll.
+                            </p>
+                            <p>
+                                Spieler B kann deinen Vorschlag annehmen oder ablehnen. Wenn er/sie annimmt, erhältst
+                                du und Spieler B die Taler entsprechend deines Vorschlags. Wenn er/sie ablehnt, erhaltet
+                                ihr beide {{ Constants.ug_outside|c }}.
+                            </p>
+                        </span>
+                        <span class="langElement" lang="en">Your offer:</span>
+                        <span class="langElement" lang="de">Dein Vorschlag:</span>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content">
+                                <span class="dropdownSelectedPlaceholder">
+                                    <span class="langElement" lang="en">Click to choose your offer</span>
+                                    <span class="langElement" lang="de">Klicken um einen Vorschlag zu wählen</span>
+                                </span>
+                                {% for field in form %}
+                                    <ul>
+                                        {% for choice in field %}
+                                            <li>
+                                                {{ choice }}
+                                                {{ choice.label }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div>
+                            {% include 'global/elements/next_template.html' %}
+                        </div>
+                    </div>
+                    <div class="col-4 text-center">
+                        <img src="{% static 'img/dollar.png' %}" width="400px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

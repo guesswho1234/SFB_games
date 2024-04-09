@@ -1,0 +1,63 @@
+.dropdown-wrapper input[type="radio"]:not(:checked) + label ,
+.dropdown-wrapper input[type="radio"] {
+    display: none;
+}
+
+.dropdown-wrapper .dropdownSelectedPlaceholder {
+    cursor: pointer;
+    color: #888888;
+}
+
+.dropdown-wrapper li label {
+    cursor: pointer;
+    padding: 5px
+}
+
+.dropdown-wrapper.active input[type="radio"]:checked + label {
+    background: #0d6efd;
+    color: white;
+    border-radius: 3px;
+}
+
+.dropdown-wrapper.active input[type="radio"]:checked:hover + label {
+    background: #0b5ed7;
+    color: white;
+}
+
+.dropdown-wrapper.active input[type="radio"]:not(:checked):hover + label {
+    background: #cccccc;
+}
+
+.dropdown-wrapper.active .dropdown-content input[type="radio"] + label {
+    display: block;
+    border-radius: 3px;
+}
+
+.dropdown-wrapper.active li:not(:first-of-type) {
+    padding-top: 2px;
+}
+
+.dropdown-wrapper {
+    width: fit-content;
+    background: white;
+}
+
+.dropdown-content {
+    border-radius: 5px;
+    border: 1px solid #b3b3bf;
+    padding: 5px;
+}
+
+.dropdown-wrapper ul,
+.dropdown-wrapper li {
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-wrapper ul {
+    list-style: none;
+}
+
+.dropdown-wrapper li {
+    border-radius: 3px;
+}

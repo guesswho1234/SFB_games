@@ -1,0 +1,43 @@
+<div id="gamesIntro">
+    <hr>
+    <b>Welcome to the SFB Games!</b>
+    <br/>
+    <br/>
+    <progress id="setup-init-progress"></progress>
+    <span id="setup-init-done" style="display:none">
+        To access the setup, please click <a id="setup-url" href="">here</a>.
+    </span>
+    <br/>
+    <br/>
+    <h3>Demo Sessions</h3>
+</div>
+
+<script>
+// modify dom of demo page
+$("#gamesIntro").closest(".col-md-3.card.bg-light").hide();
+$(".col-md-9").removeClass("col-md-9");
+$(".page-header").append($("#gamesIntro"));
+
+// create demo session for home page with websocket
+$(function () {
+    const init_session_config = "%s";
+    const init_num_participants = %i;
+
+    let socketCreateSession = makeReconnectingWebSocket("/create_demo_session");
+    let form_data = {
+        session_config: init_session_config,
+        num_participants: init_num_participants,
+        is_demo: false
+    };
+
+    socketCreateSession.send(JSON.stringify(form_data));
+
+    socketCreateSession.onmessage = function (message) {
+        const sessionCode = JSON.parse(message['data'])['session_url'].split("/")[2];
+
+        $("#setup-url").attr("href", "/AdminReport/" + sessionCode);
+        $('#setup-init-progress').hide();
+        $("#setup-init-done").show();
+    }
+});
+</script>

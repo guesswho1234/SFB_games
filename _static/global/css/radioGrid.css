@@ -1,0 +1,44 @@
+.grid-content input[type="radio"] {
+  display: none;
+}
+
+.grid-item input[type="radio"]:checked + label {
+    outline: solid 5px black
+}
+
+.grid-item input[type="radio"]:not(:checked):hover + label {
+    box-shadow: 0 0 0 6px white;
+    outline: dashed 5px black;
+}
+
+.grid-item label {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.grid-content {
+    display: grid;
+    column-gap: 10px;
+    row-gap: 10px;
+    grid-template-columns: repeat( auto-fit, minmax(150px, 1fr));
+    place-items: center;
+}
+
+.grid-content .grid-item {
+    width: 125px;
+    height: 75px;
+    border-radius: 10px;
+    outline: solid 6px transparent;
+}
+
+.grid-item span {
+    background: rgba(255,255,255,0.5);
+    border-radius: 10px;
+    padding: 3px 6px 4px 6px;
+    font-size: 1.2rem;
+}

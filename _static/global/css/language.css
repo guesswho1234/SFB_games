@@ -1,0 +1,15 @@
+#languageSwitchContainer {
+    margin: auto;
+    display: flex;
+    place-content: center;
+    gap: 5px;
+}
+
+.langSelector {
+    cursor: pointer;
+}
+
+.langSelector.active {
+    font-weight: bold;
+    text-decoration: underline;
+}

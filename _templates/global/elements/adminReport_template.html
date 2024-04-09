@@ -1,0 +1,176 @@
+<link href="{{ static 'global/css/adminReport.css' }}" rel="stylesheet">
+<script src="{{ static 'global/js/adminReport.js' }}"></script>
+
+<div id="customReport" class="box">
+  <div class="card bg-light m-3">
+    <div class="card-body">
+      <h1>Setup</h1>
+      {% if redirect %}
+        <p>
+          To access the setup, please click <a href="/AdminReport/{{ demoSession.code }}">here</a>.
+        </p>
+      {% else %}
+        <script>
+          const minParticipants = {{ minParticipants }};
+          const maxParticipants = {{ maxParticipants }};
+
+          $('.page-header').hide();
+          $('.nav.nav-tabs').hide();
+        </script>
+        {% csrf_token %}
+        <p>
+          All games can be played individually using manually created or demo sessions. However, doing so
+          gives no control over language settings and how participants in multiplayer games are grouped.
+        </p>
+        <p>
+          Alternatively, games can also be played using the custom "HOME PAGE" interface (recommended), which offers
+          additional settings for languages, grouping, games to display.
+          <ul>
+            <li>
+              <b>Grouping:</b> <br/>
+              Each participant is given a color used for grouping, such that only participants with the same
+              color can end up in the same group. Initially, each participants has the same color selected. However,
+              this color can be changed at any time. With that, it is possible to configure which participants (devices)
+              can be grouped and which can't.
+            </li>
+          </ul>
+        </p>
+        <p>
+          To use the "HOME PAGE" interface, at least the "HOME PAGE" room needs to be set up. For each game you wish to
+          be able to play, a respective room needs to be set up as well. You can do this in the "Rooms" section below.
+        </p>
+        <div id="roomSettings">
+          <h2>Rooms</h2>
+          <p>
+            Here you see an overview of existing rooms you can set up. Clicking on "Reset room(s)" will create
+            a session for each room selected. By entering the desired number of participants, you can control the size
+            of sessions created. This process will never delete or interfere with existing sessions, but simply create
+            new ones that will be used from thereon.
+          </p>
+          <div class="button-progress-group">
+            <button class="btn btn-primary" id="reset-rooms-btn" disabled>
+              <img src='{% static "glyphicons/refresh.png" %}'> Reset room(s)
+            </button>
+            <div>
+              <progress id="reset-rooms-wait" style="display:none"></progress>
+            </div>
+          </div>
+          <table class="table">
+            <thead>
+              <th>
+                <input class="form-check-input" name="checkAllRooms" type="checkbox" value="">
+              </th>
+              <th>
+                <span>Room</span>
+                <span id="numParticipants">
+                  <label for="numParticipants">Number of Participants</label>
+                  <input type="number" name="numParticipants" placeholder="{{ minParticipants }}" value="{{ minParticipants }}">
+                </span>
+              </th>
+            </thead>
+            <tbody>
+              <tr id="homePageRoomSettings">
+                <td>
+                  <input type="checkbox" class="form-check-input roomSession"
+                         data-session-config="{{ homePageSetup.session_config_name }}"
+                         data-room-name="{{ homePageSetup.room_name }}"
+                         name="setup">
+                </td>
+                <td>
+                  {{ homePageSetup.display_name }}
+                </td>
+              </tr>
+              {% for g in gameSetup %}
+                  <tr class="gameRoomSetting">
+                    <td>
+                      <input type="checkbox" class="form-check-input roomSession"
+                         data-session-config="{{ g.session_config_name }}"
+                         data-room-name="{{ g.room_name }}"
+                         name="setup">
+                    </td>
+                    <td>
+                      {{ g.display_name }}
+                    </td>
+                  </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <br/>
+        <div id="sessionSettings">
+          <h2>Sessions</h2>
+          <p>
+            Here you see an overview of existing sessions and if they are linked to a room. Clicking on
+            "Delete session(s)" will delete all selected sessions. Make sure to download your data before doing so.
+            Depending on the remaining spots in a session, colors will change.
+            <ul>
+              <li>
+                <b class="hasRoom low">Green:</b> less than 50% of slots taken
+              </li>
+              <li>
+                <b class="hasRoom medium">Yellow:</b> at least 50% of slots taken
+              </li>
+              <li>
+                <b class="hasRoom high">Orange:</b> at least 75% of slots taken
+              </li>
+              <li>
+                <b class="hasRoom full">Red:</b> session is full
+              </li>
+            </ul>
+          </p>
+          <div class="button-progress-group">
+            <button type="button" class="btn btn-secondary" id="btn-delete-sessions" disabled>
+              <img src='{% static "glyphicons/delete.png" %}'> Delete session(s)
+            </button>
+            <div>
+              <progress id="delete-sessions-wait" style="display:none"></progress>
+            </div>
+          </div>
+          <table class="table">
+            <thead>
+              <th>
+                <input class="form-check-input" name="checkAllSessions" type="checkbox" value="">
+              </th>
+              <th>Code</th>
+              <th>Size</th>
+              <th>Taken</th>
+              <th>Open</th>
+              <th>Config</th>
+              <th>Created</th>
+              <th>Room</th>
+            </thead>
+            <tbody>
+              {% for s in sessions %}
+                <tr class="{% if s.room == None %}hasNoRoom{% else %}hasRoom{% endif %}
+                    {% if s.sessionCapacity == 0.0 %} full
+                    {% elif s.sessionCapacity <= 0.25 %} high
+                    {% elif s.sessionCapacity <= 0.5 %} medium
+                    {% else %} low{% endif %}">
+                  <td>
+                    <input class="form-check-input" name="session" type="checkbox" value="{{ s.session.code }}">
+                  </td>
+                  <td>
+                    <a href="{% url 'SessionStartLinks' s.session.code %}">{{ s.session.code }}</a>
+                  </td>
+                  <td>{{ s.session.num_participants }}</td>
+                  <td>{{ s.sessionNumVisited }}</td>
+                  <td>{{ s.sessionNumUnvisited }}</td>
+                  <td>{{ s.session.config.name }}</td>
+                  <td>{{ s.session._created_readable() }}</td>
+                  <td>{{ s.room }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h2>Link to Home Page</h2>
+          <p>
+            For participation through the "HOME PAGE" interface, share the QR-Code or URL below.
+          </p>
+          {% include 'global/elements/homePageRedirect_template.html' %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

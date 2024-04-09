@@ -1,0 +1,80 @@
+.floatBox {
+    width: 100%;
+    float: inline-start;
+}
+
+.rightImg {
+    float: right;
+}
+
+.leftImg {
+    float: left;
+}
+
+.floatImg  {
+    width: 20%;
+}
+
+.floatImg img {
+    width: 120%;
+}
+
+.leftImg img {
+    float: left;
+    margin-left: -30%
+}
+
+.rightImg img {
+    margin-left: 10%
+}
+
+.floatText {
+    width: 80%;
+    float: inline-end;
+}
+
+.pd_choice {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#pd_decisionTable {
+    text-align: center;
+    display: grid;
+    grid-template-rows: auto;
+    place-content: center;
+    margin: 1rem;
+}
+
+#decisionHeader {
+    margin-bottom: 1rem;
+}
+
+.decisionRow {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr;
+    margin: unset;
+}
+
+.decisionRow .decisionColumn {
+    display: flex;
+    place-items: center;
+}
+
+.decisionRow .decisionColumn:not(#decisionHeader) {
+    place-content: center;
+    height: 100%;
+}
+
+.decisionRow .decisionColumn:first-of-type {
+    font-weight: bold;
+}
+
+.decisionRow:not(#decisionHeader) {
+    background: #0d6efd;
+    color: white;
+}
+
+.decisionRow:not(#decisionHeader):hover {
+    background: #0b5ed7;
+}

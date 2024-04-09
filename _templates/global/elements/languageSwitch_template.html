@@ -1,0 +1,8 @@
+<div id="languageSwitchContainer">
+    {% for item in languages %}
+        {% if forloop.counter > 1 %}
+            <span> | </span>
+        {% endif %}
+        <span class="langSelector">{{ item }}</span>
+    {% endfor %}
+</div>

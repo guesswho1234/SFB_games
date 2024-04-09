@@ -1,0 +1,137 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+    {% include 'global/elements/baseStyles_template.html' %}
+    <link href="{{ static 'global/css/language.css' }}" rel="stylesheet">
+    <link href="{{ static 'global/css/homePage.css' }}" rel="stylesheet">
+    <link href="{{ static 'global/css/radioGrid.css' }}" rel="stylesheet">
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** SCRIPTS *** #}
+{# ****************************************************************************************************************** #}
+{% block scripts %}
+    {% include 'global/elements/baseScripts_template.html' %}
+    <script>
+        const colorCodeSelected = "{{ colorCodeSelected }}";
+    </script>
+    <script src="{{ static 'global/js/i_homePage.js' }}"></script>
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+<!--loaded from proxyTitle-->
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ****************************************************************************************************************** #}
+{% block content %}
+    <span id="proxyTitle">
+        <span class="langElement" lang="en">SFB - Games</span>
+        <span class="langElement" lang="de">SFB - Spiele</span>
+    </span>
+    <div id="participantColor" style="background:#{{ colorCodeSelected }};">
+    </div>
+    <div id="games">
+        {% for item in games %}
+            <a class="game-select" href="/room/{{ room_name_prefix}}{{ item.name }}/?participant_label={{ colorCodeSelected }}_{{ label.labelId }}_{{ label.labelNonce }}" target="_self">
+                <span>
+                    {% for key, value in item.display_names_lang.items %}
+                        <span class="langElement" lang="{{ key }}">
+                            {{ value }}
+                        </span>
+                    {% endfor %}
+                    <span class="gamePlayerCount">
+                        {% for p in item.player_range %}
+                            <i class="fa-solid fa-user"></i>
+                        {% endfor %}
+                    </span>
+                </span>
+            </a>
+        {% endfor %}
+    </div>
+
+    <div id="homePageButtons">
+        <div class="buttonItem" id="HSQr">
+            <i class="fa-solid fa-link"></i>
+        </div>
+        <div class="buttonItem" id="HSSettings">
+            <i class="fa-solid fa-gear"></i>
+        </div>
+    </div>
+    <div id="qr" class="popupContainer" style="display: none">
+        <div class="popup">
+            <span class="popupHeader">
+                <span class="popupClose buttonItem">
+                    <i class="fa-solid fa-xmark"></i>
+                </span>
+            </span>
+            <div class="card-body">
+                <div id="qrContent">
+                    <h1>Link to Home Page</h1>
+                    <p>
+                        Share the QR-Code or URL below for others to participate too.
+                    </p>
+                    {% include 'global/elements/homePageRedirect_template.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="settings" class="popupContainer" style="display: none">
+        <div class="popup">
+            <span class="popupHeader">
+                <span class="popupClose buttonItem">
+                    <i class="fa-solid fa-xmark"></i>
+                </span>
+            </span>
+            <div class="card-body">
+                <div id="settingsContent">
+                    <h1><i class="fa-solid fa-globe"></i></h1>
+                    {% include 'global/elements/languageSwitch_template.html' %}
+                    <h1><i class="fa-solid fa-paintbrush"></i></h1>
+                    <div id="participantLabel">
+                        <div class="grid-content">
+                            {% for choice in form.color %}
+                                <div class="grid-item" style="background:#{{ choice.data }};">
+                                    {{ choice }}
+                                    {{ choice.label }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <span id="labelNumber" hidden>
+                            <span>{{ label.labelId }}</span>
+                        </span>
+                        <span id="labelNonce" hidden>
+                            <span>{{ label.labelNonce }}</span>
+                        </span>
+                    </div>
+                    <h1><i class="fa-solid fa-gamepad"></i></h1>
+                    <div id="formFields">
+                        {% for field in form %}
+                            {% if "G_" in field.name %}
+                                <span class="formFieldVisible">
+                                    {{ formfield field.name }}
+                                </span>
+                            {% endif %}
+                        {% endfor %}
+                        <span class="formFieldHidden" hidden>
+                            {{ form.alwaysIncorrectFormField }}
+                        </span>
+                    </div>
+                </div>
+                <div id="setSettings">
+                    <button class="otree-btn-next buttonItem">
+                        <i class="fa-solid fa-check"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

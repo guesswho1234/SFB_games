@@ -1,0 +1,24 @@
+body {
+    font-size: 1.5rem;
+}
+
+h2, h4 {
+    display: flex;
+    place-content: space-between;
+}
+
+button {
+    margin-top: 1rem;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.box {
+    border: 1px solid #dee2e6;
+}

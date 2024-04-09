@@ -1,0 +1,172 @@
+#_otree-title span {
+    display: none;
+}
+
+#participantColor {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    display: flex;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+#nextButton {
+    display: none;
+}
+
+.otree-form-errors {
+    display: none;
+}
+
+#settingsButton {
+    margin-left: 0px;
+}
+
+#HSQr,
+#HSSettings {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    cursor: pointer;
+}
+
+#HSQr input,
+#HSSettings input{
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+#HSQr input:hover,
+#HSSettings input:hover {
+    filter: brightness(95%);
+}
+
+.popupContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(90, 90, 90, 0.5);
+    z-index: 9999;
+    justify-items: center;
+}
+
+.popup {
+    max-height: 90vh;
+    width: 90vw;
+    position: fixed;
+    top: 5vh;
+    left: 5vw;
+    overflow: auto;
+    background: #fff !important;
+    border-radius: 1rem;
+}
+
+#qr .popup {
+    left: unset;
+    width: unset;
+}
+
+#qr p {
+    text-align: center;
+}
+
+
+.popup .popupHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup .popupClose {
+    cursor: pointer;
+    margin: 15px;
+    margin-left: auto;
+}
+
+#participantLabel {
+    padding: 12px;
+}
+
+#games {
+    display: grid;
+    width: 100%;
+}
+
+.game-select {
+    font-size: 2rem;
+    text-align: center;
+    background-color: rgba(0, 51, 98, 0.2);
+    border: 1pt solid rgba(0, 51, 98, 0.7);
+    border-radius: 1.0rem;
+    color: rgba(0, 51, 98, 1.0);
+    padding: 1.0rem;
+    margin: 1.0rem;
+    cursor: pointer;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    text-decoration: none;
+}
+
+h1 {
+    display: flex;
+    place-content: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#formFields {
+    display: grid;
+    place-content: center;
+}
+
+.game-select:hover {
+    background-color: rgba(0, 51, 98, 0.6);
+    color: white;
+}
+
+.game-select > span {
+    overflow-wrap: anywhere;
+    display: flex;
+    place-content: space-between;
+    width: 100%;
+}
+
+.gamePlayerCount {
+    margin-left: 2rem;
+}
+
+#setSettings {
+    display: flex;
+    place-content: center;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+#homePageButtons {
+    display: flex;
+    place-content: center;
+    gap: 1rem;
+}
+
+.buttonItem {
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    place-content: center;
+    place-items: center;
+}
+
+.buttonItem:hover {
+    color: white !important;
+    background-color: black;
+    border: 2px solid white;
+}

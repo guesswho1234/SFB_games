@@ -1,0 +1,118 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+    {% include 'global/elements/baseStyles_template.html' %}
+    <link href="{{ static 'global/css/g_prisonersDilemma.css' }}" rel="stylesheet">
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** SCRIPTS *** #}
+{# ****************************************************************************************************************** #}
+{% block scripts %}
+    {% include 'global/elements/baseScripts_template.html' %}
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+<!--loaded from proxyTitle-->
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ****************************************************************************************************************** #}
+{% block content %}
+    <span id="proxyTitle">
+        <span>
+            <span class="langElement" lang="en">Explanation</span>
+            <span class="langElement" lang="de">Erklärung</span>
+        </span>
+
+        {% include 'global/elements/exit_template.html' %}
+    </span>
+    <div class="box">
+        <div class="card bg-light m-3">
+            <div class="card-body">
+                <div class="floatBox">
+                    <div class="rightImg floatImg">
+                        <img src="{% static 'img/prisoner1.png' %}">
+                    </div>
+                    <div class="floatText">
+                        <span class="langElement" lang="en">
+                            <p>
+                                Imagine you and your partner are accused of having committed a crime (Important: you have
+                                actually done something). You will now be interrogated separately and can each
+                                decide to confess or not.
+                            </p>
+                            <p>
+                                If you both confess, you will each go to prison for 5 years (i.e., you will get
+                                {{ Constants.pd_both_cooperate_payoff }} respectively).
+                            </p>
+                            <p>
+                                If you both choose to not confess, you can only be accused of minor offenses and,
+                                therefore, only spend 1 year behind bars each ({{ Constants.pd_both_defect_payoff|c }} respectively).
+                            </p>
+                        </span>
+                        <span class="langElement" lang="de">
+                            <p>
+                                Stellt dir vor, dein/e Partner/in und du werdet eins Verbrechens beschuldigt (Wichtig: Ihr habt
+                                tatsächlich etwas angestellt). Ihr werdet nun getrennt voneinander verhört und könnt jeweils
+                                entscheiden, ob ihr gesteht oder nicht gesteht.
+                            </p>
+                            <p>
+                                Wenn ihr beide gesteht, so wandert ihr für jeweils 5 Jahre ins Gefängnis (d.h. ihr bekommt
+                                jeweils {{ Constants.pd_both_cooperate_payoff|c }}).
+                            </p>
+                            <p>
+                                Entscheidet ihr euch beide nicht zu gestehen, so können euch nur kleine Delikte vorgeworfen
+                                werden und ihr verbringt jeweils nur 1 Jahr hinter Gittern (jeweils
+                                {{ Constants.pd_both_defect_payoff|c }}).
+                            </p>
+                        </span>
+                    </div>
+                    <div class="leftImg floatImg">
+                        <img src="{% static 'img/prisoner2.png' %}">
+                    </div>
+                    <div class="floatText">
+                        <span class="langElement" lang="en">
+                            <p>
+                                However, you can serve as the key witness, which guarantees you immunity from prosecution if your
+                                partner doesn't confess. In this case you will be free ({{ Constants.pd_betray_payoff }}) and your
+                                partner goes to prison for 10 years ({{ Constants.pd_betrayed_payoff }} for him/her).
+                                come to visit in prison.
+                            </p>
+                            <p>
+                                Vice versa, of course, you have to go to prison for 10 years ({{ Constants.pd_betrayed_payoff }}),
+                                if you do not confess while your partner confesses as the key witness
+                                ({{ Constants.pd_betray_payoff }} for her/him). She/he then goes free and can you
+                                come to visit in prison.
+                            </p>
+                        </span>
+                        <span class="langElement" lang="de">
+                            <p>
+                                Du kannst aber von der Kronzeugenregel Gebrauch machen, die dir Straffreiheit garantiert, wenn dein/e
+                                Partner/Partnerin nicht gesteht. In diesem Fall kommst du frei ({{ Constants.pd_betray_payoff }}) und dein/e
+                                Partner/in wandert für 10 Jahre ins Gefängnis ({{ Constants.pd_betrayed_payoff }} für sie/ihn).
+                            </p>
+                            <p>
+                                Umgekehrt gilt natürlich, dass du für 10 Jahre ins Gefängnis gehen musst ({{ Constants.pd_betrayed_payoff }}),
+                                wenn du nicht gestehst während dein/e Partner/in gesteht und die Kronzeugenregel in Anspruch nimmt
+                                ({{ Constants.pd_betray_payoff }} für sie /ihn). Sie/er geht dann frei und kann dich
+                                im Gefängnis besuchen kommen.
+                            </p>
+                        </span>
+                    </div>
+                </div>
+
+                <div>
+                    {% include 'global/elements/next_template.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

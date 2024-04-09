@@ -1,0 +1,136 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+    {% include 'global/elements/baseStyles_template.html' %}
+    <link href="{% static 'global/css/g_bombTask2.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** SCRIPTS *** #}
+{# ****************************************************************************************************************** #}
+{% block scripts %}
+    {% include 'global/elements/baseScripts_template.html' %}
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+<!--loaded from proxyTitle-->
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ****************************************************************************************************************** #}
+{% block content %}
+    <span id="proxyTitle">
+        <span>
+            <span class="langElement" lang="en">Result</span>
+            <span class="langElement" lang="de">Ergebnis</span>
+        </span>
+
+        {% include 'global/elements/exit_template.html' %}
+    </span>
+    <div class="box">
+        <div class="card bg-light m-3">
+            <div class="card-body">
+                <!-- ----------------------------------------------------------------------------------------------------------- -->
+                <!-- information about results -->
+                <!-- ----------------------------------------------------------------------------------------------------------- -->
+                {% if Constants.num_rounds == 1 %}
+                    <span class="langElement" lang="en">
+                        You chose to collect {{ boxes_collected }} out of {{ boxes_total }} boxes.
+                        <br/>
+                        The bomb was hidden behind the box in row {{ bomb_row }} and column {{ bomb_col }}.
+                        <br/><br/>
+                    </span>
+                    <span class="langElement" lang="de">
+                        Du hast dich entschieden {{ boxes_collected }} von {{ boxes_total }} Kisten einzusammeln.
+                        <br/>
+                        Die Bombe war hinter der Kiste in Reihe {{ bomb_row }} und Spalte {{ bomb_col }} versteckt.
+                        <br/><br/>
+                    </span>
+                    {% if bomb %}
+                        <span class="langElement" lang="en">
+                            The bomb was among your {{ boxes_collected }} collected boxes.<br/>
+                            Accordingly, all your earnings were destroyed and your payoff amounts to {{ payoff }}.
+                        </span>
+                        <span class="langElement" lang="de">
+                            Die Bombe war unter einer deiner {{ boxes_collected }} eingesammelten Kisten.<br/>
+                            Somit wurden all deine Einnahmen zerstört und deine Auszahlung beträgt {{ payoff }}.
+                        </span>
+                    {% else %}
+                        <span class="langElement" lang="en">
+                            Your collected boxes did not contain the bomb.<br/>
+                            Thus, you receive {{ box_value }} for each of the {{ boxes_collected }} boxes
+                            you collected such that your payoff amounts to {{ payoff }}.
+                        </span>
+                        <span class="langElement" lang="de">
+                            Keine deiner eingesammelten Kisten beinhaltete die Bombe.<br/>
+                            Dadurch bekommst du {{ box_value }} für jede deiner {{ boxes_collected }} eingesammelten Kisten,
+                            womit deine Auszahlung {{ payoff }} beträgt.
+                        </span>
+                    {% endif %}
+                {% endif %}
+
+                <!-- ----------------------------------------------------------------------------------------------------------- -->
+                <!-- history table -->
+                <!-- ----------------------------------------------------------------------------------------------------------- -->
+                {% if Constants.num_rounds > 1 %}
+                    <div>
+                    <div class="card-header">
+                        <b>
+                            <span class="langElement" lang="en">Summary</span>
+                            <span class="langElement" lang="de">Zusammenfassung</span>
+                        </b>
+                    </div>
+                    <div>
+                        <table class="table">
+                            <tr>
+                                <th class="langElement" lang="en">Round Nr.</th>
+                                <th class="langElement" lang="de">Runden Nr.</th>
+                                <th class="langElement" lang="en">Collected Boxes</th>
+                                <th class="langElement" lang="de">Gesammelte Kisten</th>
+                                <th class="langElement" lang="en">Contained bomb</th>
+                                <th class="langElement" lang="de">Bombe enthalten</th>
+                                <th class="langElement" lang="en">Payoff</th>
+                                <th class="langElement" lang="de">Auszahlung</th>
+                            </tr>
+                            {% for p in player_in_all_rounds %}
+                            <tr class="{% if forloop.counter == round_to_pay %}roundToPay{% else %}roundNotToPay{% endif %}">
+                                <td>{{ p.subsession.round_number }}</td>
+                                <td>{{ p.boxes_collected }}</td>
+                                <td>
+                                    {% if p.bomb %}
+                                        <span class="langElement" lang="en">Yes</span>
+                                        <span class="langElement" lang="de">Ja</span>
+                                    {% else %}
+                                        <span class="langElement" lang="en">No</span>
+                                        <span class="langElement" lang="de">Nein</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ p.round_result }}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                        <br/>
+                        <p>
+                            <span class="langElement" lang="en">
+                                Round Nr. {{ round_to_pay }} was selected for your payoff.<br/>
+                                <b>Therefore, your payoff is {{ total_payoff }}.</b>
+                            </span>
+                            <span class="langElement" lang="de">
+                                Runde Nr. {{ round_to_pay }} wurde für die Auszahlung ausgewählt.<br/>
+                                <b>Deine Auszahlung beträgt somit {{ total_payoff }}.</b>
+                            </span>
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
