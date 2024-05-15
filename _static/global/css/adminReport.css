@@ -53,3 +53,14 @@
     width: 50px;
     text-align: right;
 }
+
+#viewMode {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+
+#viewMode span {
+    cursor: pointer;
+}

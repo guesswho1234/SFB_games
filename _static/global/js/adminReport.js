@@ -145,3 +145,25 @@ $(function () {
         }
     }
 });
+
+// minimal view
+function minView() {
+    $("#top_menu").hide();
+    $("#minView").hide();
+    $("#fullView").show();
+}
+
+// full view
+function fullView() {
+    $("#top_menu").show();
+    $("#minView").show();
+    $("#fullView").hide();
+}
+
+$('body').on('click', '#minView', function() {
+	minView();
+});
+
+$('body').on('click', '#fullView', function() {
+	fullView();
+});

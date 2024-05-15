@@ -1,6 +1,11 @@
 <link href="{{ static 'global/css/adminReport.css' }}" rel="stylesheet">
 <script src="{{ static 'global/js/adminReport.js' }}"></script>
 
+<span id="viewMode">
+  <span id="minView">&#10134;</span>
+  <span id="fullView">&#10133;</span>
+</span>
+
 <div id="customReport" class="box">
   <div class="card bg-light m-3">
     <div class="card-body">
@@ -24,7 +29,7 @@
         </p>
         <p>
           Alternatively, games can also be played using the custom "HOME PAGE" interface (recommended), which offers
-          additional settings for languages, grouping, games to display.
+          additional settings for the language to use, grouping, and games to display.
           <ul>
             <li>
               <b>Grouping:</b> <br/>
@@ -174,3 +179,7 @@
     </div>
   </div>
 </div>
+
+<script>
+  minView();
+</script>

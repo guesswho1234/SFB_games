@@ -1,19 +1,97 @@
+<span id="viewMode">
+    <span id="minView">&#10134;</span>
+    <span id="fullView">&#10133;</span>
+</span>
 <div id="gamesIntro">
     <progress id="setup-init-progress"></progress>
     <br/>
-    <span id="setup-init-done" style="display:none;background: gold;padding: 1rem;font-weight: bold;border-radius: 5px;">
-        To access the setup, please click <a id="setup-url" href="">here</a>!
+    <span id="setup-init-done">
+        <a id="setup-url" href="">SETUP</a>
     </span>
-    <br/>
-    <br/>
-    <h3>Demo Sessions</h3>
+    <span id="demoSessionsHeader">
+        <br>
+        <br>
+        <h3>Demo Sessions</h3>
+    </span>
 </div>
+
+<style>
+#gamesIntro.minView {
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#setup-init-done {
+    display:none;
+    background: gold;
+    padding: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+#setup-url {
+    text-decoration: none;
+}
+
+#viewMode {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+
+#viewMode span {
+    cursor: pointer;
+}
+</style>
 
 <script>
 // modify dom of demo page
 $("#gamesIntro").closest(".col-md-3.card.bg-light").hide();
 $(".col-md-9").removeClass("col-md-9");
-$(".page-header").append($("#gamesIntro"));
+$("body").prepend($("#viewMode"));
+
+minView();
+
+// minimal view
+function minView() {
+    $("#gamesIntro").prepend($("#_otree-title"));
+
+    $("body").append($("#gamesIntro"));
+    $("#top_menu").hide();
+    $("#admin-page-container").hide();
+    $("#minView").hide();
+    $("#fullView").show();
+    $("#demoSessionsHeader").hide();
+    $("#gamesIntro").removeClass("fulLView")
+    $("#gamesIntro").addClass("minView")
+}
+
+// full view
+function fullView() {
+    $(".page-header").prepend($("#_otree-title"));
+    $(".page-header").append($("#gamesIntro"));
+    $("#top_menu").show();
+    $("#admin-page-container").show();
+    $("#minView").show();
+    $("#fullView").hide();
+    $("#demoSessionsHeader").show();
+    $("#gamesIntro").removeClass("minView")
+    $("#gamesIntro").addClass("fullView")
+}
+
+$('body').on('click', '#minView', function() {
+	minView();
+});
+
+$('body').on('click', '#fullView', function() {
+	fullView();
+});
 
 // create demo session for home page with websocket
 $(function () {
