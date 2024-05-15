@@ -20,8 +20,8 @@ class Constants(BaseConstants):
     tg_endowment = 3
     tg_multiplier = 3
 
-    tg_choicesTexts = dict(en=[" for player B, ", " for me"],
-                           de=[" für Spieler B, ", " für mich"])
+    tg_choicesTexts = dict(en=[" for the other player, ", " for me"],
+                           de=[" für den anderen Spieler, ", " für mich"])
 
     tg_choicesOffer = currency_range(0, tg_endowment, 1)
 

@@ -22,8 +22,8 @@ configGames = [
     ),
     dict(
         name='g_prisonersDilemma',
-        display_name="GAME: Prisoners Dilemma",
-        display_names_lang=dict(en="Prisoners Dilemma", de="Gefangenendilemma"),
+        display_name="GAME: Prisoner's Dilemma",
+        display_names_lang=dict(en="Prisoner's Dilemma", de="Gefangenendilemma"),
         min_participants=2,
         num_demo_participants=2,
         app_sequence=['g_prisonersDilemma'],

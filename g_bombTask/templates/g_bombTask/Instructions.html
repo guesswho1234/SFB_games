@@ -64,30 +64,26 @@
                 </span>
                 <span class="langElement" lang="de">
                     <p>
-                        Auf der nächsten Seite wirst du eine {{ num_rows }}x{{ num_cols }}-Matrix mit {{ num_boxes }}
-                        Kisten auf deinem Bildschrim sehen.
+                        Auf der nächsten Seite wirst du {{ num_boxes }} Felder auf deinem Bildschrim sehen.
                     </p>
                     <p>
+                        Sobald du auf "Start" klickst, wird pro Sekunde ein zufällig ausgewähltes Feld mit einem Haken
+                        markiert. Für jedes markierte Feld erhältst du {{ box_value }}.
+
                         Sobald du das Spiel mit einem Klick auf "Start" beginnst, wird pro Sekunde eine zufällige
                         Kiste eingesammelt. Sobald eine Kiste eingesammelt wurde, wird sie mit einem Haken markiert.
                         Für jede eingesammelte Kiste erhältst du {{ box_value }}.
                     </p>
                     <p>
-                        Hinter einer der Kisten versteckt sich eine Bombe, die alles zerstört was du eingesammelt
-                        hast. Die übrigen {{ num_nobomb }} Kisten sind je {{ box_value }} wert. Du weißt nicht, wo
-                        sich die Bombe befindet. Du weißt nur, dass die Bombe mit gleicher Wahrscheinlichkeit hinter
-                        jeder Kiste sein kann.
+                        Hinter einem der Felder versteckt sich jedoch eine Bombe, die alle Felder (und Taler) zerstört.
+                        Du weißt nicht, wo sich die Bombe befindet. Du weißt nur, dass die Bombe mit gleicher
+                        Wahrscheinlichkeit hinter jedem Feld versteckt sein kann.
                     </p>
                     <p>
-                        Deine Aufgabe besteht darin, zu entscheiden, wann der Sammelvorgang beendet werden soll. Der
-                        Sammelvorgang wird gestoppt, indem du auf "Stopp" klickst. Wenn du die Kiste einsammelst, in
-                        der sich die Bombe befindet, explodiert die Bombe und du erhältst nichts. Wenn du den
-                        Sammelvorgang anhältst, bevor du die Bombe einsammelst, erhältst du den bis dahin gesammelten
-                        Betrag.
-                    </p>
-                    <p>
-                        Am Ende der Aufgabe können die Kisten durch Klicken auf die Schaltfläche "Lösen" umgeschalten
-                        werden. Für jede Kiste wird dann entsprechend entweder ein Dollarzeichen oder eine Bombe angezeigt.
+                        Nachdem du auf „Start“ geklickt hast musst du entscheiden wann das Markieren der Felder gestoppt
+                        werden soll, indem du auf "Stopp" klickst. Klicke anschließend auf „Lösen“. Wenn das Feld mit
+                        der Bombe markiert wurde, explodiert die Bombe und du erhältst nichts. Ansonsten erhältst du den
+                        gesammelten Betrag (= Anzahl der markierten Felder).
                     </p>
                 </span>
                 <div>

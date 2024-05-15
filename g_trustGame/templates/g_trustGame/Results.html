@@ -47,8 +47,8 @@
                         </span>
                         <span class="langElement" lang="de">
                             Du hattest zu Beginn {{ Constants.tg_endowment|c }} zur Verfügung. Davon hast du
-                            {{ group.tg_offer|c }} an Spieler B gesendet. Die von dir gesendeten Taler wurden dann mal
-                            {{ Constants.tg_multiplier }} genommen. Spieler B hatte somit {{ tg_multipliedCoins|c }} zur Verfügung und hat sich
+                            {{ group.tg_offer|c }} an Spieler B gesendet. Die von dir gesendeten Taler wurden dann mit
+                            {{ Constants.tg_multiplier }} multipliziert. Spieler B hatte somit {{ tg_multipliedCoins|c }} zur Verfügung und hat sich
                             entschieden {{ group.tg_return|c }} an dich zurückzusenden.
                         </span>
                     {% else %}
@@ -60,7 +60,7 @@
                         </span>
                         <span class="langElement" lang="de">
                             Spieler A hatte zu Beginn {{ Constants.tg_endowment|c }} zur Verfügung. Er/Sie hat dir davon
-                            {{ group.tg_offer|c }} gesendet. Die an dich gesendeten Taler wurden dann mal {{ tg_multipliedCoins }} genommen.
+                            {{ group.tg_offer|c }} gesendet. Die an dich gesendeten Taler wurden dann mit {{ tg_multipliedCoins }} multipliziert.
                             Du hattest somit {{ tg_multipliedCoins|c }} zur Verfügung und hast dich entschieden
                             {{ group.tg_return|c }} an Spieler A zurückzusenden.
                         </span>
