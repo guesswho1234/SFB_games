@@ -64,7 +64,7 @@ class Constants(BaseConstants):
     # in case of <dynamic = True>, game play is affected by the variables <time_interval> and <random> below
     # if <dynamic = False>, subjects collect as many boxes as they want by clicking or entering the respective number
     # in case of <dynamic = False>, game play is affected by the variables <random>, <devils_game> and <undoable>
-    dynamic = True
+    dynamic = False
 
     # time interval between single boxes being collected (in seconds)
     # note that this only affects game play if <dynamic = True>
