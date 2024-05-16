@@ -144,10 +144,24 @@ $(function () {
             resolve(true);
         }
     }
+    minView();
 });
+
+//hide all text
+//reduce setup to automatically select all rooms
+//hide checkboxes
+//only offer number of participants as input field
+//rename button "reset rooms"
+//same for delete sessions, but still show sessions and status text / colors
+//also always show qr code and url
+
 
 // minimal view
 function minView() {
+    $(".fullView").hide();
+    $('input[name=setup]').prop('checked', true).trigger("change");
+    $('input[name=session]').prop('checked', true).trigger("change");
+    $("#roomSettings th").css("border-style", "hidden");
     $("#top_menu").hide();
     $("#minView").hide();
     $("#fullView").show();
@@ -155,6 +169,10 @@ function minView() {
 
 // full view
 function fullView() {
+    $(".fullView").show();
+    $('input[name=setup]').prop('checked', false).trigger("change");
+    $('input[name=session]').prop('checked', false).trigger("change");
+    $("#roomSettings th").css("border-style", "solid");
     $("#top_menu").show();
     $("#minView").show();
     $("#fullView").hide();

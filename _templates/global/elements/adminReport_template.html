@@ -23,38 +23,42 @@
           $('.nav.nav-tabs').hide();
         </script>
         {% csrf_token %}
-        <p>
-          All games can be played individually using manually created or demo sessions. However, doing so
-          gives no control over language settings and how participants in multiplayer games are grouped.
-        </p>
-        <p>
-          Alternatively, games can also be played using the custom "HOME PAGE" interface (recommended), which offers
-          additional settings for the language to use, grouping, and games to display.
-          <ul>
-            <li>
-              <b>Grouping:</b> <br/>
-              Each participant is given a color used for grouping, such that only participants with the same
-              color can end up in the same group. Initially, each participants has the same color selected. However,
-              this color can be changed at any time. With that, it is possible to configure which participants (devices)
-              can be grouped and which can't.
-            </li>
-          </ul>
-        </p>
-        <p>
-          To use the "HOME PAGE" interface, at least the "HOME PAGE" room needs to be set up. For each game you wish to
-          be able to play, a respective room needs to be set up as well. You can do this in the "Rooms" section below.
-        </p>
+        <div id="setupInfo" class="fullView">
+          <p>
+            All games can be played individually using manually created or demo sessions. However, doing so
+            gives no control over language settings and how participants in multiplayer games are grouped.
+          </p>
+          <p>
+            Alternatively, games can also be played using the custom "HOME PAGE" interface (recommended), which offers
+            additional settings for the language to use, grouping, and games to display.
+            <ul>
+              <li>
+                <b>Grouping:</b> <br/>
+                Each participant is given a color used for grouping, such that only participants with the same
+                color can end up in the same group. Initially, each participants has the same color selected. However,
+                this color can be changed at any time. With that, it is possible to configure which participants (devices)
+                can be grouped and which can't.
+              </li>
+            </ul>
+          </p>
+          <p>
+            To use the "HOME PAGE" interface, at least the "HOME PAGE" room needs to be set up. For each game you wish to
+            be able to play, a respective room needs to be set up as well. You can do this in the "Rooms" section below.
+          </p>
+        </div>
         <div id="roomSettings">
           <h2>Rooms</h2>
-          <p>
-            Here you see an overview of existing rooms you can set up. Clicking on "Reset room(s)" will create
-            a session for each room selected. By entering the desired number of participants, you can control the size
-            of sessions created. This process will never delete or interfere with existing sessions, but simply create
-            new ones that will be used from thereon.
-          </p>
-          <div class="button-progress-group">
+          <div id="roomInfo" class="fullView">
+            <p>
+              Here you see an overview of existing rooms you can set up. Clicking on "Create rooms" will create
+              a session for each room selected. By entering the desired number of participants, you can control the size
+              of sessions created. This process will never delete or interfere with existing sessions, but simply create
+              new ones that will be used from thereon.
+            </p>
+          </div>
+          <div class="button-progress-group minView">
             <button class="btn btn-primary" id="reset-rooms-btn" disabled>
-              <img src='{% static "glyphicons/refresh.png" %}'> Reset room(s)
+              <img src='{% static "glyphicons/refresh.png" %}'> Create rooms
             </button>
             <div>
               <progress id="reset-rooms-wait" style="display:none"></progress>
@@ -62,18 +66,18 @@
           </div>
           <table class="table">
             <thead>
-              <th>
+              <th class="fullView">
                 <input class="form-check-input" name="checkAllRooms" type="checkbox" value="">
               </th>
               <th>
-                <span>Room</span>
+                <span class="fullView">Room</span>
                 <span id="numParticipants">
                   <label for="numParticipants">Number of Participants</label>
                   <input type="number" name="numParticipants" placeholder="{{ minParticipants }}" value="{{ minParticipants }}">
                 </span>
               </th>
             </thead>
-            <tbody>
+            <tbody class="fullView">
               <tr id="homePageRoomSettings">
                 <td>
                   <input type="checkbox" class="form-check-input roomSession"
@@ -101,31 +105,34 @@
             </tbody>
           </table>
         </div>
-        <br/>
         <div id="sessionSettings">
           <h2>Sessions</h2>
-          <p>
-            Here you see an overview of existing sessions and if they are linked to a room. Clicking on
-            "Delete session(s)" will delete all selected sessions. Make sure to download your data before doing so.
-            Depending on the remaining spots in a session, colors will change.
-            <ul>
-              <li>
-                <b class="hasRoom low">Green:</b> less than 50% of slots taken
-              </li>
-              <li>
-                <b class="hasRoom medium">Yellow:</b> at least 50% of slots taken
-              </li>
-              <li>
-                <b class="hasRoom high">Orange:</b> at least 75% of slots taken
-              </li>
-              <li>
-                <b class="hasRoom full">Red:</b> session is full
-              </li>
-            </ul>
-          </p>
+          <div id="sessionInfo">
+            <p class="fullView">
+              Here you see an overview of existing sessions and if they are linked to a room. Clicking on
+              "Delete sessions" will delete all selected sessions. Make sure to download your data before doing so.
+              Depending on the remaining spots in a session, colors will change.
+            </p>
+            <p>
+              <ul>
+                <li>
+                  <b class="hasRoom low">Green:</b> less than 50% of slots taken
+                </li>
+                <li>
+                  <b class="hasRoom medium">Yellow:</b> at least 50% of slots taken
+                </li>
+                <li>
+                  <b class="hasRoom high">Orange:</b> at least 75% of slots taken
+                </li>
+                <li>
+                  <b class="hasRoom full">Red:</b> session is full
+                </li>
+              </ul>
+            </p>
+          </div>
           <div class="button-progress-group">
             <button type="button" class="btn btn-secondary" id="btn-delete-sessions" disabled>
-              <img src='{% static "glyphicons/delete.png" %}'> Delete session(s)
+              <img src='{% static "glyphicons/delete.png" %}'> Delete sessions
             </button>
             <div>
               <progress id="delete-sessions-wait" style="display:none"></progress>
@@ -133,16 +140,16 @@
           </div>
           <table class="table">
             <thead>
-              <th>
+              <th class="fullView">
                 <input class="form-check-input" name="checkAllSessions" type="checkbox" value="">
               </th>
               <th>Code</th>
               <th>Size</th>
               <th>Taken</th>
               <th>Open</th>
-              <th>Config</th>
-              <th>Created</th>
-              <th>Room</th>
+              <th class="fullView">Config</th>
+              <th class="fullView">Created</th>
+              <th class="fullView">Room</th>
             </thead>
             <tbody>
               {% for s in sessions %}
@@ -151,7 +158,7 @@
                     {% elif s.sessionCapacity <= 0.25 %} high
                     {% elif s.sessionCapacity <= 0.5 %} medium
                     {% else %} low{% endif %}">
-                  <td>
+                  <td class="fullView">
                     <input class="form-check-input" name="session" type="checkbox" value="{{ s.session.code }}">
                   </td>
                   <td>
@@ -160,9 +167,9 @@
                   <td>{{ s.session.num_participants }}</td>
                   <td>{{ s.sessionNumVisited }}</td>
                   <td>{{ s.sessionNumUnvisited }}</td>
-                  <td>{{ s.session.config.name }}</td>
-                  <td>{{ s.session._created_readable() }}</td>
-                  <td>{{ s.room }}</td>
+                  <td class="fullView">{{ s.session.config.name }}</td>
+                  <td class="fullView">{{ s.session._created_readable() }}</td>
+                  <td class="fullView">{{ s.room }}</td>
                 </tr>
               {% endfor %}
             </tbody>
@@ -170,7 +177,7 @@
         </div>
         <div>
           <h2>Link to Home Page</h2>
-          <p>
+          <p class="fullView">
             For participation through the "HOME PAGE" interface, share the QR-Code or URL below.
           </p>
           {% include 'global/elements/homePageRedirect_template.html' %}
@@ -179,7 +186,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  minView();
-</script>
