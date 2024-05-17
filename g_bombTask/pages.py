@@ -22,6 +22,7 @@ class Instructions(Page):
             'num_nobomb':           Constants.num_rows * Constants.num_cols - 1,
             'box_value':            Constants.box_value,
             'time_interval':        Constants.time_interval,
+            'num_rounds':           Constants.num_rounds
         }
 
 

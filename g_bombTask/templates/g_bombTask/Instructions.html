@@ -39,22 +39,25 @@
             <div class="card-body">
                 <span class="langElement" lang="en">
                     <p>
-                        In the following page, you will see a {{ num_rows }}x{{ num_cols }}-matrix containing
-                        {{ num_boxes }} boxes on your screen.
+                        On the following page, you will see {{ num_boxes }} fields on your screen.
                     </p>
                     <p>
-                        You can then mark these fields by clicking on them. For each marked field you receive you
+                        You can mark these fields by clicking on them. For each marked field you receive you
                         {{ box_value }}.
                     </p>
                     <p>
                         However, there is a bomb hidden behind one of the fields that destroys all fields (and coins).
-                        You don't know where the bomb is. All you know is that the bomb is the same Probability can be
-                        hidden behind every field.
+                        You don't know where the bomb is. All you know is that the bomb can be hidden behind every field
+                        with equal probability.
                     </p>
                     <p>
-                        If you don't want to mark any more fields, you can click "Stop". Then click “Solve”. When
-                        the space with the bomb has been marked, the bomb explodes and you receive nothing. Otherwise
-                        you will receive the amount collected (= number of marked Fields).
+                        Once you’re finished marking fields, you can click "Stop" followed by “Solve”. When the field
+                        with the bomb has been marked, the bomb explodes and you receive nothing. Otherwise you will
+                        receive the amount collected (= number of marked Fields).
+                    </p>
+                    <p>
+                        The game is played for {{ num_rounds }} rounds. One of these rounds is selected randomly for
+                        payment.
                     </p>
                 </span>
                 <span class="langElement" lang="de">
@@ -62,8 +65,8 @@
                         Auf der nächsten Seite wirst du {{ num_boxes }} Felder auf deinem Bildschrim sehen.
                     </p>
                     <p>
-                        Diese Felder kannst du dann markieren, indem du sie anklickst. Für jedes markierte Feld erhältst
-                        du {{ box_value }}.
+                        Diese Felder kannst du markieren, indem du sie anklickst. Für jedes markierte Feld erhältst du
+                        {{ box_value }}.
                     </p>
                     <p>
                         Hinter einem der Felder versteckt sich jedoch eine Bombe, die alle Felder (und Taler) zerstört.
@@ -71,10 +74,13 @@
                         Wahrscheinlichkeit hinter jedem Feld versteckt sein kann.
                     </p>
                     <p>
-                        Wenn du keine weiteren Felder markieren möchtest, kannst du auf „Stopp“ klicken. Klicke
-                        anschließend auf „Lösen“. Wenn das Feld mit der Bombe markiert wurde, explodiert die Bombe und
-                        du erhältst nichts. Ansonsten erhältst du den gesammelten Betrag (= Anzahl der markierten
-                        Felder).
+                        Wenn du keine weiteren Felder markieren möchtest, klicke auf „Stopp“ und anschließend auf
+                        „Lösen“. Wenn das Feld mit der Bombe markiert wurde, explodiert die Bombe und du erhältst
+                        nichts. Ansonsten erhältst du den gesammelten Betrag (= Anzahl der markierten Felder).
+                    </p>
+                    <p>
+                        Das Spiel wiederholt sich für {{ num_rounds }} Runden. Eine dieser Runden wird für die
+                        tatsächliche Auszahlung zufällig ausgewählt.
                     </p>
                 </span>
                 <div>
