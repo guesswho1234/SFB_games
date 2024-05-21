@@ -37,6 +37,15 @@ configGames = [
         num_demo_participants=1,
         app_sequence=['g_bombTask'],
         use_browser_bots=False
+    ),
+dict(
+        name='g_whellOfFortune',
+        display_name="GAME: Wheel Of Fortune",
+        display_names_lang=dict(en="Wheel Of Fortune", de="Glücksrad"),
+        min_participants=1,
+        num_demo_participants=1,
+        app_sequence=['g_wheelOfFortune'],
+        use_browser_bots=False
     )
 ]
 
@@ -70,12 +79,12 @@ baseUrl = "https://" + environ.get('HEROKU_APP_DEFAULT_DOMAIN_NAME') if environ.
 # colors used for participant labels
 colorLabels = [
     dict(colorCode="0077BB", name_lang=dict(en="blue", de="blau")),
+    dict(colorCode="E8601C", name_lang=dict(en="orange", de="orange")),
     dict(colorCode="004488", name_lang=dict(en="dark blue", de="dunkelblau")),
     dict(colorCode="66CCEE", name_lang=dict(en="light blue", de="hellblau")),
     dict(colorCode="225522", name_lang=dict(en="dark green", de="duneklgrün")),
     dict(colorCode="55AA22", name_lang=dict(en="green", de="grün")),
     dict(colorCode="ACD39E", name_lang=dict(en="light green", de="hellgrün")),
-    dict(colorCode="E8601C", name_lang=dict(en="orange", de="orange")),
     dict(colorCode="DC050C", name_lang=dict(en="red", de="rot")),
     dict(colorCode="EE3377", name_lang=dict(en="magenta", de="magenta")),
     dict(colorCode="FFAABB", name_lang=dict(en="pink", de="pink")),

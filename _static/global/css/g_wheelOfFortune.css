@@ -1,0 +1,124 @@
+#selectResultCaption {
+    display: flex;
+    place-content: center;
+    text-align: center;
+}
+
+#selectResultButtons  {
+    margin-top: 1rem;
+    display: flex;
+    place-content: center;
+    gap: 10px;
+}
+
+#selectResultButtons span {
+    height: 38px;
+    font-weight: bold;
+    color: white;
+}
+
+#selectResultButtons button:hover {
+    filter: opacity(0.8);
+}
+
+#resultSummary {
+    display: flex;
+    place-content: center;
+    text-align: center;
+}
+
+.otree-form-errors {
+    display: none;
+}
+
+figure {
+	margin: 1rem;
+}
+
+figcaption {
+	margin-top: 1rem;
+	font-weight: bold;
+}
+
+.graph {
+	display: grid;
+	margin: 1rem;
+}
+
+.graphBars {
+	display: grid;
+	grid-template-rows: 100px auto;
+	place-content: center;
+	height: 140px;
+	gap: 10px;
+}
+
+.graphLabels {
+	display: grid;
+	grid-template-rows: auto auto;
+	place-content: center;
+	gap: 10px;
+}
+
+.graph.columnGraph {
+	display: block;
+	overflow-y: hidden;
+}
+
+.graphColumnBar {
+	grid-row: 5 / 1;
+	justify-self: center;
+	width: 45px;
+	border-radius: 3px;
+}
+
+.graphColumnBar.backgroundBar {
+	background: #f8f9fa;
+}
+
+.graphColumnBar.overlayBar {
+	background: transparent;
+	border: 2px solid black;
+}
+
+.graphColumnLabel {
+	text-align: center;
+	display: grid;
+	font-weight: bold;
+	margin-top: 5px;
+	height: fit-content;
+	width: 45px;
+}
+
+.absoluteValue  {
+	display: grid;
+	height: 100%;
+	width: 100%;
+	place-content: center;
+	font-weight: bold;
+}
+
+#resultChart .graph {
+	position: relative;
+}
+
+#history {
+    display: flex;
+    width: 100%;
+}
+
+.draw {
+    height: 40px;
+    flex: 1 1 0;
+    border: 1px solid black;
+    text-align: center;
+    min-height: 40px;
+}
+
+.draw:first-of-type {
+    border-left: 2px solid black;
+}
+
+.draw:last-of-type {
+    border-right: 2px solid black;
+}

@@ -16,6 +16,7 @@ class Instructions(Page):
     def vars_for_template(self):
         return {
             "languages": languages,
+            "hasParticipantLabel": self.participant.label is not None,
             'num_rows':             Constants.num_rows,
             'num_cols':             Constants.num_cols,
             'num_boxes':            Constants.num_rows * Constants.num_cols,
@@ -64,6 +65,7 @@ class Decision(Page):
 
         return {
             "languages": languages,
+            "hasParticipantLabel": self.participant.label is not None,
             'otree_vars':       otree_vars
         }
 
@@ -88,6 +90,7 @@ class Results(Page):
 
         return {
             "languages": languages,
+            "hasParticipantLabel": self.participant.label is not None,
             'player_in_all_rounds':   self.player.in_all_rounds(),
             'box_value':              Constants.box_value,
             'boxes_total':            Constants.num_rows * Constants.num_cols,

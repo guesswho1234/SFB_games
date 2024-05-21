@@ -13,7 +13,8 @@ class InitialWaitPage(WaitPage):
 
     def vars_for_template(self):
         return {
-            "languages": languages
+            "languages": languages,
+            "hasParticipantLabel": self.participant.label is not None,
         }
 
 
@@ -26,7 +27,8 @@ class Offer(Page):
 
     def vars_for_template(self):
         return {
-            "languages": languages
+            "languages": languages,
+            "hasParticipantLabel": self.participant.label is not None,
         }
 
 
@@ -38,7 +40,8 @@ class WaitForProposer(WaitPage):
 
     def vars_for_template(self):
         return {
-            "languages": languages
+            "languages": languages,
+            "hasParticipantLabel": self.participant.label is not None,
         }
 
 
@@ -52,6 +55,7 @@ class Return(Page):
     def vars_for_template(self):
         return {
             "languages": languages,
+            "hasParticipantLabel": self.participant.label is not None,
             "tg_multipliedCoins": self.group.tg_offer * Constants.tg_multiplier
         }
 
@@ -67,7 +71,8 @@ class ResultsWaitPage(WaitPage):
 
     def vars_for_template(self):
         return {
-            "languages": languages
+            "languages": languages,
+            "hasParticipantLabel": self.participant.label is not None,
         }
 
 
@@ -75,6 +80,7 @@ class Results(Page):
     def vars_for_template(self):
         return {
             "languages": languages,
+            "hasParticipantLabel": self.participant.label is not None,
             "tg_multipliedCoins": self.group.tg_offer * Constants.tg_multiplier
         }
 

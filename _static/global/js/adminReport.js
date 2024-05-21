@@ -147,15 +147,6 @@ $(function () {
     minView();
 });
 
-//hide all text
-//reduce setup to automatically select all rooms
-//hide checkboxes
-//only offer number of participants as input field
-//rename button "reset rooms"
-//same for delete sessions, but still show sessions and status text / colors
-//also always show qr code and url
-
-
 // minimal view
 function minView() {
     $(".fullView").hide();

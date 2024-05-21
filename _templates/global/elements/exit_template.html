@@ -1,5 +1,7 @@
-<span id="exitToHomePage">
-    <a href="/room/waitingRoom/" target="_self">
-        <i class="fas fa-sign-out-alt"></i>
-    </a>
-</span>
+{% if hasParticipantLabel %}
+    <span id="exitToHomePage">
+        <a href="/room/waitingRoom/" target="_self">
+            <i class="fas fa-sign-out-alt"></i>
+        </a>
+    </span>
+{% endif %}

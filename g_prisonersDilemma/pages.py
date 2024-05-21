@@ -12,14 +12,16 @@ class InitialWaitPage(WaitPage):
 
     def vars_for_template(self):
         return {
-            "languages": languages
+            "languages": languages,
+            "hasParticipantLabel": self.participant.label is not None,
         }
 
 
 class Instructions(Page):
     def vars_for_template(self):
         return {
-            "languages": languages
+            "languages": languages,
+            "hasParticipantLabel": self.participant.label is not None,
         }
 
 
@@ -29,7 +31,8 @@ class Decision(Page):
 
     def vars_for_template(self):
         return {
-            "languages": languages
+            "languages": languages,
+            "hasParticipantLabel": self.participant.label is not None,
         }
 
 
@@ -41,7 +44,8 @@ class ResultsWaitPage(WaitPage):
 
     def vars_for_template(self):
         return {
-            "languages": languages
+            "languages": languages,
+            "hasParticipantLabel": self.participant.label is not None,
         }
 
     def after_all_players_arrive(self):
@@ -53,6 +57,7 @@ class Results(Page):
     def vars_for_template(self):
         return {
             "languages": languages,
+            "hasParticipantLabel": self.participant.label is not None,
             'my_decision': self.player.pd_decision,
             'opponent_decision': self.player.other_player().pd_decision,
             'same_choice': self.player.pd_decision == self.player.other_player().pd_decision,
