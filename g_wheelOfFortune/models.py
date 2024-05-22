@@ -17,7 +17,7 @@ class Constants(BaseConstants):
     num_rounds = 1
 
     numColors = 2
-    numSegments = 24
+    numSegments = 50
 
     resultValues = [colorLabels[i] for i in range(numColors)]
 
