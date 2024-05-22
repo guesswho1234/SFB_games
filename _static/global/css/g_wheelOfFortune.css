@@ -105,6 +105,8 @@ figcaption {
 #history {
     display: flex;
     width: 100%;
+    border: 1px solid black;
+    border-radius: 3px;
 }
 
 .draw {
@@ -113,12 +115,4 @@ figcaption {
     border: 1px solid black;
     text-align: center;
     min-height: 40px;
-}
-
-.draw:first-of-type {
-    border-left: 2px solid black;
-}
-
-.draw:last-of-type {
-    border-right: 2px solid black;
 }
