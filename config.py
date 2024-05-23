@@ -78,9 +78,9 @@ baseUrl = "https://" + environ.get('HEROKU_APP_DEFAULT_DOMAIN_NAME') if environ.
 
 # colors used for participant labels
 colorLabels = [
+    dict(colorCode="003361", name_lang=dict(en="dark blue", de="dunkelblau")),
+    dict(colorCode="F39200", name_lang=dict(en="orange", de="orange")),
     dict(colorCode="0077BB", name_lang=dict(en="blue", de="blau")),
-    dict(colorCode="E8601C", name_lang=dict(en="orange", de="orange")),
-    dict(colorCode="004488", name_lang=dict(en="dark blue", de="dunkelblau")),
     dict(colorCode="66CCEE", name_lang=dict(en="light blue", de="hellblau")),
     dict(colorCode="225522", name_lang=dict(en="dark green", de="duneklgrün")),
     dict(colorCode="55AA22", name_lang=dict(en="green", de="grün")),
