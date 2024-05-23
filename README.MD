@@ -8,6 +8,7 @@ The following games are currently implemented:
 - Ultimatum game (one-shot, 2 players)
 - Prisoners dilemma (one-shot, 2 players)
 - Bomb risk elicitation task (3 rounds, 1 player)
+- Wheel of fortune (infinite rounds, 1 player)
 
 ## Installation
 
