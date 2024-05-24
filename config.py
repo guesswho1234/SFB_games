@@ -39,7 +39,7 @@ configGames = [
         use_browser_bots=False
     ),
 dict(
-        name='g_whellOfFortune',
+        name='g_wheelOfFortune',
         display_name="GAME: Wheel Of Fortune",
         display_names_lang=dict(en="Wheel Of Fortune", de="Glücksrad"),
         min_participants=1,
