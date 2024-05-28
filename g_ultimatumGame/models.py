@@ -23,7 +23,7 @@ class Constants(BaseConstants):
     ug_choices = currency_range(0, ug_endowment, ug_increment)
 
     ug_choicesTexts = dict(en=[" for player B, ", " for me"],
-                           de=[" für Spieler B, ", " für mich"])
+                           de=[" für Person B, ", " für mich"])
 
     ug_choicesLang = []
     for i in range(len(ug_choices)):

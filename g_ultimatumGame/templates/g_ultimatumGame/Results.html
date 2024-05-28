@@ -45,21 +45,21 @@
                         </span>
                         <span class="langElement" lang="de">
                             Von den {{ Constants.ug_endowment|c }}n, die zur Verfügung standen,
-                            hast du Spieler B {{ group.ug_offer|c }} angeboten.<br/>
+                            hast du Person B {{ group.ug_offer|c }} angeboten.<br/>
                         </span>
                         {% if group.ug_accept %}
                             <span class="langElement" lang="en">
                                 Player B has accepted your offer.
                             </span>
                             <span class="langElement" lang="de">
-                                Spieler B hat dein Angebot angenommen.
+                                Person B hat dein Angebot angenommen.
                             </span>
                         {% else %}
                             <span class="langElement" lang="en">
                                 Player B has rejected your offer.
                             </span>
                             <span class="langElement" lang="de">
-                                Spieler B hat dein Angebot abgelehnt.
+                                Person B hat dein Angebot abgelehnt.
                             </span>
                         {% endif %}
                     {% else %}
@@ -68,7 +68,7 @@
                         </span>
                         <span class="langElement" lang="de">
                             Von den {{ Constants.ug_endowment|c }}n, die zur Verfügung standen,
-                            hat dir Spieler A {{ group.ug_offer|c }} angeboten.<br/>
+                            hat dir Person A {{ group.ug_offer|c }} angeboten.<br/>
                         </span>
                         {% if group.ug_accept %}
                             <span class="langElement" lang="en">
