@@ -38,73 +38,7 @@
     <div class="box">
         <div class="card bg-light m-3">
             <div class="form-group required">
-                <div id="pd_decisionTable">
-                    <div id="decisionHeader" class="decisionRow">
-                        <div class="decisionColumn">
-                        </div>
-                        <div class="decisionColumn">
-                            <span class="langElement" lang="en">My partner confesses</span>
-                            <span class="langElement" lang="de">Mein/e Partner/in gesteht</span>
-                        </div>
-                        <div class="decisionColumn">
-                            <span class="langElement" lang="en">My partner does not confess</span>
-                            <span class="langElement" lang="de">Mein/e Partner/in gesteht nicht</span>
-                        </div>
-                    </div>
-                    <button name="pd_decision" value="Cooperate" class="btn btn-large choice decisionRow">
-                        <div class="decisionColumn">
-                            <span class="langElement" lang="en">I confess</span>
-                            <span class="langElement" lang="de">Ich gestehe</span>
-                        </div>
-                        <div class="decisionColumn">
-                            <span class="langElement" lang="en">
-                                I get {{ Constants.pd_both_cooperate_payoff }}.<br/>
-                                My partner gets {{ Constants.pd_both_cooperate_payoff }}.
-                            </span>
-                            <span class="langElement" lang="de">
-                                Ich bekomme {{ Constants.pd_both_cooperate_payoff }}.<br/>
-                                Mein/e Partner/in bekommt {{ Constants.pd_both_cooperate_payoff }}.
-                            </span>
-                        </div>
-                        <div class="decisionColumn">
-                            <span class="langElement" lang="en">
-                                I get {{ Constants.pd_betray_payoff }}.<br/>
-                                My partner getst {{ Constants.pd_betrayed_payoff }}.
-                            </span>
-                            <span class="langElement" lang="de">
-                                Ich bekomme {{ Constants.pd_betray_payoff }}.<br/>
-                                Mein/e Partner/in bekommt {{ Constants.pd_betrayed_payoff }}.
-                            </span>
-                        </div>
-                    </button>
-                    <hr>
-                    <button name="pd_decision" value="Defect" class="btn btn-large choice decisionRow">
-                        <div class="decisionColumn">
-                            <span class="langElement" lang="en">I do not confess</span>
-                            <span class="langElement" lang="de">Ich gestehe nicht</span>
-                        </div>
-                        <div class="decisionColumn">
-                            <span class="langElement" lang="en">
-                                I get {{ Constants.pd_betrayed_payoff }}.<br/>
-                                My partner getst {{ Constants.pd_betray_payoff }}.
-                            </span>
-                            <span class="langElement" lang="de">
-                                Ich bekomme {{ Constants.pd_betrayed_payoff }}.<br/>
-                                Mein/e Partner/in bekommt {{ Constants.pd_betray_payoff }}.
-                            </span>
-                        </div>
-                        <div class="decisionColumn">
-                            <span class="langElement" lang="en">
-                                I get {{ Constants.pd_both_defect_payoff }}.<br/>
-                                My partner getst {{ Constants.pd_both_defect_payoff }}.
-                            </span>
-                            <span class="langElement" lang="de">
-                                Ich bekomme {{ Constants.pd_both_defect_payoff }}.<br/>
-                                Mein/e Partner/in bekommt {{ Constants.pd_both_defect_payoff }}.
-                            </span>
-                        </div>
-                    </button>
-                </div>
+                {% include 'g_prisonersDilemma/templates/g_prisonersDilemma/pd_table.html' %}
             </div>
         </div>
     </div>

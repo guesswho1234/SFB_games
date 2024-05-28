@@ -78,3 +78,32 @@
 .decisionRow:not(#decisionHeader):hover {
     background: #0b5ed7;
 }
+
+.explanation {
+    display: grid;
+    font-weight: bold;
+    padding: 2px 4px 2px 4px;
+    width: fit-content;
+    margin: auto;
+    border-radius: 3px;
+}
+
+.noCooperation {
+    background: #f59214;
+}
+
+.cooperation {
+    background: #57b357;
+}
+
+.highlight {
+    border: 2px solid black;
+    border-radius: 3px;
+    padding: 3px;
+}
+
+#pd_decisionTable button:disabled {
+    background: transparent;
+    color: black;
+}
+

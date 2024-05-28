@@ -6,6 +6,7 @@
 {# ****************************************************************************************************************** #}
 {% block styles %}
     {% include 'global/elements/baseStyles_template.html' %}
+    <link href="{{ static 'global/css/g_prisonersDilemma.css' }}" rel="stylesheet">
 {% endblock %}
 
 {# ****************************************************************************************************************** #}
@@ -81,6 +82,9 @@
                     </span>
                 </p>
             </div>
+        </div>
+        <div class="card bg-light m-3">
+            {% include 'g_prisonersDilemma/templates/g_prisonersDilemma/pd_table.html' %}
         </div>
     </div>
 {% endblock %}

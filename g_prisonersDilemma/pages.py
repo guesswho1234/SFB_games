@@ -32,6 +32,9 @@ class Decision(Page):
     def vars_for_template(self):
         return {
             "languages": languages,
+            "isResultsPage": False,
+            'my_decision': None,
+            'opponent_decision': None,
             "hasParticipantLabel": self.participant.label is not None,
         }
 
@@ -57,6 +60,7 @@ class Results(Page):
     def vars_for_template(self):
         return {
             "languages": languages,
+            "isResultsPage": True,
             "hasParticipantLabel": self.participant.label is not None,
             'my_decision': self.player.pd_decision,
             'opponent_decision': self.player.other_player().pd_decision,
