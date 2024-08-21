@@ -10,4 +10,4 @@ COPY . /app
 EXPOSE 3838
 
 ENTRYPOINT ["otree"] 
-CMD ["prodserver", "8000"]
+CMD ["prodserver", "3838"]
