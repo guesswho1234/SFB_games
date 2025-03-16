@@ -23,7 +23,7 @@ Additionally, make sure to enable the labs feature for your application by runni
 the `HEROKU_APP_DEFAULT_DOMAIN_NAME` environment variable.
 
 For your Heroku resources, one web dyno needs to be active to run the application. While not needed, it is generally
-recommended to also set up a Postgres database ("*Heroku Postgres*"). Without it the app will still work, however there are a few drawbacks. First, you might encounter performance issues. Second, data will be stored temporarily and gone when the dyno goes to idle or is deactivated.
+recommended to also set up a Postgres database ("*Heroku Postgres*"). Without it the app will still work, however, with a few drawbacks. First, you might encounter performance issues. Second, all data will gone when the dyno goes to idle or is deactivated.
 
 ## Usage
 
