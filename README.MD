@@ -9,29 +9,22 @@ The following games are currently implemented:
 - Bomb risk elicitation task (3 rounds, 1 player)
 - Wheel of fortune (infinite rounds, 1 player)
 
-## Installation
+## Setup on Heroku
 
-One easy way to get this application running online is through Heroku. Simply deploy this repository
-to Heroku and set up the following environment variables (called "*Config Vars*" on Heroku):
+Deploy this repository to Heroku and set up the following config variables:
 - `OTREE_ADMIN_USERNAME` (set any username)
 - `OTREE_ADMIN_PASSWORD` (set any password)
 - `OTREE_AUTH_LEVEL` (set to `STUDY`)
 - `OTREE_PRODUCTION` (set to `1`)
 
-Additionally, make sure to enable the labs feature for your application by running 
-`$ heroku labs:enable runtime-dyno-metadata -a <app name>`. This is needed for your application to be able to retrieve
-the `HEROKU_APP_DEFAULT_DOMAIN_NAME` environment variable.
+Additionally, make sure to enable the labs feature for your Heroku application by running 
+`$ heroku labs:enable runtime-dyno-metadata -a <app name>` in the console.
 
-For your Heroku resources, one web dyno needs to be active to run the application. While not needed, it is generally
-recommended to also set up a Postgres database ("*Heroku Postgres*"). Without it the app will still work, however, with a few drawbacks. First, you might encounter performance issues. Second, all data will gone when the dyno goes to idle or is deactivated.
+For your Heroku resources, one single web dyno needs to be active to run the application. While not needed, it is generally
+recommended to also set up a Postgres database. Without it the app will still work, however, with a few drawbacks. First, you might encounter performance issues. Second, all data will gone once the dyno goes to idle or is deactivated.
 
-## Usage
+## Run
 
-Once the application is installed, opening the app should redirect you to a login page. Use the previously defined 
-credentials from the environment variables. After successfully logging in, follow the setup instructions 
+After the setup, opening the Heroku app should redirect you to a login page. Use the previously defined 
+credentials from the environment variables to authenticate. Proceed by following the instructions 
 shown on the landing page.
-
-## Contributing
-
-Pull requests are welcome. For major changes (e.g., additional games), please open an issue first to discuss what 
-you would like to change.
